@@ -1,9 +1,9 @@
-import { 
-  HeroSection, 
-  FeaturesSection, 
-  DownloadSection, 
+import {
+  HeroSection,
+  FeaturesSection,
+  DownloadSection,
   Footer,
-  StickyDownloadButton 
+  StickyDownloadButton
 } from './components';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
   const handleDownload = () => {
     // Create a temporary link to trigger download
     const link = document.createElement('a');
-    link.href = '/apk/app-release.apk';
+    link.href = '/apk/AutoBrain.apk';
     link.download = 'AutoBrain.apk';
     link.click();
   };
@@ -20,16 +20,16 @@ function App() {
     <div className="min-h-screen bg-midnight-black">
       {/* Section 1: Hero */}
       <HeroSection onDownload={handleDownload} />
-      
+
       {/* Section 2: Features & App Preview */}
       <FeaturesSection />
-      
+
       {/* Section 3: Download CTA */}
       <DownloadSection onDownload={handleDownload} />
-      
+
       {/* Footer */}
       <Footer />
-      
+
       {/* Sticky Download Button (appears on scroll) */}
       <StickyDownloadButton onDownload={handleDownload} />
     </div>
