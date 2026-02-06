@@ -1,12 +1,20 @@
+import { useRef } from 'react';
 import {
   HeroSection,
   FeaturesSection,
   DownloadSection,
   Footer,
-  StickyDownloadButton
+  StickyDownloadButton,
+  DemoPhoneSection
 } from './components';
 
 function App() {
+  const demoRef = useRef<HTMLDivElement>(null);
+
+  const handleWatchDemo = () => {
+    demoRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   // Handle APK download with visual feedback
   const handleDownload = () => {
     // Create a temporary link to trigger download
@@ -19,7 +27,10 @@ function App() {
   return (
     <div className="min-h-screen bg-midnight-black">
       {/* Section 1: Hero */}
-      <HeroSection onDownload={handleDownload} />
+      <HeroSection onDownload={handleDownload} onWatchDemo={handleWatchDemo} />
+
+      {/* Section 1.5: Demo Videos */}
+      <DemoPhoneSection ref={demoRef} />
 
       {/* Section 2: Features & App Preview */}
       <FeaturesSection />

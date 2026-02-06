@@ -23,17 +23,19 @@ export function StickyDownloadButton({ onDownload }: StickyDownloadButtonProps) 
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 animate-fade-in-up">
+    <div className="fixed bottom-6 right-4 sm:right-6 z-50 animate-fade-in-up">
       <button
         onClick={onDownload}
-        className="flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-text-on-accent transition-all duration-300 hover:scale-105 shadow-2xl"
+        className="flex items-center gap-2 px-5 sm:px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-2xl"
         style={{
-          background: 'linear-gradient(135deg, #2DD4BF, #14B8A6)',
-          boxShadow: '0 0 30px rgba(45, 212, 191, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3)',
+          background: 'linear-gradient(135deg, var(--color-electric-teal), var(--color-teal-dark))',
+          color: 'var(--color-text-on-accent)',
+          boxShadow: 'var(--shadow-glow), 0 10px 30px rgba(0, 0, 0, 0.3)',
         }}
+        aria-label="Download AutoBrain APK"
       >
         <Download className="w-5 h-5" />
-        <span className="hidden sm:inline">Download APK</span>
+        <span className="hidden sm:inline text-sm sm:text-base">Download APK</span>
       </button>
     </div>
   );

@@ -1,4 +1,4 @@
-import { Download, Smartphone, HardDrive, CheckCircle } from 'lucide-react';
+import { Download, Smartphone, Shield, Zap } from 'lucide-react';
 
 interface DownloadSectionProps {
   onDownload: () => void;
@@ -6,81 +6,93 @@ interface DownloadSectionProps {
 
 export function DownloadSection({ onDownload }: DownloadSectionProps) {
   return (
-    <section id="download" className="py-24 relative overflow-hidden">
+    <section id="download" className="section-spacing relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-t from-deep-navy via-midnight-black to-midnight-black" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-electric-teal/10 blur-3xl rounded-full" />
+        <div 
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(to top, var(--color-surface-1), var(--color-midnight-black), var(--color-midnight-black))' }}
+        />
+        <div 
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] blur-3xl rounded-full"
+          style={{ background: 'rgba(45, 212, 191, 0.1)' }}
+        />
       </div>
 
       <div className="section-container relative z-10">
         {/* CTA Card */}
         <div className="max-w-3xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-success-green/10 border border-success-green/30 mb-8">
-            <CheckCircle className="w-4 h-4 text-success-green" />
-            <span className="text-sm text-success-green">Ready for Hackathon Judging</span>
+          <div className="badge-teal mb-6 sm:mb-8">
+            <Smartphone className="w-4 h-4" />
+            <span>Available Now</span>
           </div>
 
-          {/* Headline */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-            <span className="text-text-primary">Ready to Try</span>
+          {/* Headline - Professional, inviting */}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+            <span style={{ color: 'var(--color-text-primary)' }}>Experience the Future of</span>
             <br />
-            <span className="gradient-text">AutoBrain?</span>
+            <span className="gradient-text">Vehicle Diagnostics</span>
           </h2>
 
-          <p className="text-text-secondary text-lg mb-10 max-w-xl mx-auto">
-            Download now and experience AI-powered car evaluation. 
-            Perfect for the Gemini 3 Hackathon demo.
+          <p className="text-base sm:text-lg mb-8 sm:mb-10 max-w-xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
+            Download now and experience AI-powered car evaluation.
           </p>
 
           {/* Download Button */}
           <button 
             onClick={onDownload}
-            className="btn-primary text-2xl px-14 py-6 mb-8 animate-pulse-glow"
+            className="btn-primary-cta text-xl sm:text-2xl px-10 sm:px-14 py-5 sm:py-6 mb-8 sm:mb-10"
+            aria-label="Download AutoBrain APK"
           >
-            <Download className="w-7 h-7" />
-            Download APK Now
+            <Download className="w-6 h-6 sm:w-7 sm:h-7" />
+            Download for Android
           </button>
 
-          {/* APK Info */}
-          <div className="flex flex-wrap justify-center gap-6 text-text-secondary">
+          {/* Key Benefits - Professional features */}
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-8 mb-10 sm:mb-12" style={{ color: 'var(--color-text-secondary)' }}>
             <div className="flex items-center gap-2">
-              <HardDrive className="w-5 h-5 text-electric-teal" />
-              <span>~160 MB</span>
+              <Zap className="w-5 h-5" style={{ color: 'var(--color-electric-teal)' }} />
+              <span className="text-sm sm:text-base">Instant Analysis</span>
             </div>
             <div className="flex items-center gap-2">
-              <Smartphone className="w-5 h-5 text-electric-teal" />
-              <span>Android 8.0+</span>
+              <Shield className="w-5 h-5" style={{ color: 'var(--color-electric-teal)' }} />
+              <span className="text-sm sm:text-base">Expert Diagnostics</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-success-green" />
-              <span>No signup required</span>
+              <Smartphone className="w-5 h-5" style={{ color: 'var(--color-electric-teal)' }} />
+              <span className="text-sm sm:text-base">Easy to Use</span>
             </div>
           </div>
 
           {/* Installation Steps */}
-          <div className="mt-12 p-6 rounded-xl bg-slate-gray/30 border border-border-dark text-left max-w-md mx-auto">
-            <h4 className="text-sm font-semibold text-text-primary mb-4 flex items-center gap-2">
-              <Smartphone className="w-4 h-4 text-electric-teal" />
+          <div 
+            className="mt-12 p-6 rounded-xl text-left max-w-md mx-auto"
+            style={{ 
+              background: 'rgba(45, 55, 72, 0.3)',
+              border: '1px solid var(--color-border)'
+            }}
+          >
+            <h4 className="text-sm font-semibold mb-4 flex items-center gap-2" style={{ color: 'var(--color-text-primary)' }}>
+              <Smartphone className="w-4 h-4" style={{ color: 'var(--color-electric-teal)' }} />
               Quick Install Guide
             </h4>
-            <ol className="space-y-2 text-sm text-text-secondary">
+            <ol className="space-y-2 text-sm" style={{ color: 'var(--color-text-secondary)' }}>
               <li className="flex items-start gap-2">
-                <span className="text-electric-teal font-bold">1.</span>
-                Download the APK file
+                <span className="font-bold" style={{ color: 'var(--color-electric-teal)' }}>1.</span>
+                Download the APK file to your Android device
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-electric-teal font-bold">2.</span>
-                Enable "Install from unknown sources" in Settings
+                <span className="font-bold" style={{ color: 'var(--color-electric-teal)' }}>2.</span>
+                Enable "Install from unknown sources" in your device Settings
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-electric-teal font-bold">3.</span>
-                Open the downloaded APK and install
+                <span className="font-bold" style={{ color: 'var(--color-electric-teal)' }}>3.</span>
+                Open the downloaded file and follow the installation prompts
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-electric-teal font-bold">4.</span>
-                Launch AutoBrain and start evaluating!
+                <span className="font-bold" style={{ color: 'var(--color-electric-teal)' }}>4.</span>
+                Launch AutoBrain and start diagnosing your vehicle!
               </li>
             </ol>
           </div>
