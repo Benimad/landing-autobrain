@@ -11,7 +11,7 @@ function App() {
   const handleDownload = () => {
     // Create a temporary link to trigger download
     const link = document.createElement('a');
-    link.href = '/apk/AutoBrain.apk';
+    link.href = 'https://github.com/Benimad/landing-autobrain/raw/main/public/apk/AutoBrain.apk';
     link.download = 'AutoBrain.apk';
     link.click();
   };
