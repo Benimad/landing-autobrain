@@ -1,6 +1,10 @@
 import { Cpu } from 'lucide-react';
 
-export function Footer() {
+interface FooterProps {
+  onPrivacyClick?: () => void;
+}
+
+export function Footer({ onPrivacyClick }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -25,10 +29,27 @@ export function Footer() {
             © {currentYear} AutoBrain. All rights reserved.
           </p>
 
-          {/* Tagline */}
-          <p className="text-xs sm:text-sm order-2 sm:order-3" style={{ color: 'var(--color-text-muted)' }}>
-            AI-Native Automotive Diagnostics
-          </p>
+          {/* Links */}
+          <div className="flex items-center gap-4 order-2 sm:order-3">
+            <p className="text-xs sm:text-sm" style={{ color: 'var(--color-text-muted)' }}>
+              AI-Native Automotive Diagnostics
+            </p>
+            {onPrivacyClick && (
+              <button
+                onClick={onPrivacyClick}
+                className="text-xs sm:text-sm transition-colors"
+                style={{ color: 'var(--color-text-muted)' }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'var(--color-electric-teal)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = 'var(--color-text-muted)';
+                }}
+              >
+                Privacy Policy
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </footer>

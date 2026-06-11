@@ -1,15 +1,17 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import {
   HeroSection,
   FeaturesSection,
   DownloadSection,
   Footer,
   StickyDownloadButton,
-  DemoPhoneSection
+  DemoPhoneSection,
+  PrivacyPolicy
 } from './components';
 
 function App() {
   const demoRef = useRef<HTMLDivElement>(null);
+  const [currentPage, setCurrentPage] = useState<'home' | 'privacy'>('home');
 
   const handleWatchDemo = () => {
     demoRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -23,6 +25,22 @@ function App() {
     link.download = 'AutoBrain.apk';
     link.click();
   };
+
+  // Navigate to privacy policy
+  const handleNavigateToPrivacy = () => {
+    setCurrentPage('privacy');
+    window.scrollTo(0, 0);
+  };
+
+  // Navigate back to home
+  const handleBackToHome = () => {
+    setCurrentPage('home');
+    window.scrollTo(0, 0);
+  };
+
+  if (currentPage === 'privacy') {
+    return <PrivacyPolicy onBack={handleBackToHome} />;
+  }
 
   return (
     <div className="min-h-screen bg-midnight-black">
@@ -39,7 +57,7 @@ function App() {
       <DownloadSection onDownload={handleDownload} />
 
       {/* Footer */}
-      <Footer />
+      <Footer onPrivacyClick={handleNavigateToPrivacy} />
 
       {/* Sticky Download Button (appears on scroll) */}
       <StickyDownloadButton onDownload={handleDownload} />

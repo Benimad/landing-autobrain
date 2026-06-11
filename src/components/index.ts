@@ -5,3 +5,4 @@ export { Footer } from './Footer';
 export { StickyDownloadButton } from './StickyDownloadButton';
 export { AppSplashScreen } from './AppSplashScreen';
 export { DemoPhoneSection } from './DemoPhoneSection';
+export { PrivacyPolicy } from './PrivacyPolicy';
