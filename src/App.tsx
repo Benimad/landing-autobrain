@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import {
   HeroSection,
   FeaturesSection,
@@ -12,6 +12,24 @@ import {
 function App() {
   const demoRef = useRef<HTMLDivElement>(null);
   const [currentPage, setCurrentPage] = useState<'home' | 'privacy'>('home');
+
+  // Handle hash-based routing
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1).toLowerCase();
+      if (hash === 'privacy' || hash === '/privacy') {
+        setCurrentPage('privacy');
+        window.scrollTo(0, 0);
+      } else {
+        setCurrentPage('home');
+        window.scrollTo(0, 0);
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   const handleWatchDemo = () => {
     demoRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -28,14 +46,12 @@ function App() {
 
   // Navigate to privacy policy
   const handleNavigateToPrivacy = () => {
-    setCurrentPage('privacy');
-    window.scrollTo(0, 0);
+    window.location.hash = '#privacy';
   };
 
   // Navigate back to home
   const handleBackToHome = () => {
-    setCurrentPage('home');
-    window.scrollTo(0, 0);
+    window.location.hash = '#';
   };
 
   if (currentPage === 'privacy') {
