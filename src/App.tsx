@@ -13,22 +13,21 @@ function App() {
   const demoRef = useRef<HTMLDivElement>(null);
   const [currentPage, setCurrentPage] = useState<'home' | 'privacy'>('home');
 
-  // Handle hash-based routing
+  // Handle pathname-based routing
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.slice(1).toLowerCase();
-      if (hash === 'privacy' || hash === '/privacy') {
+    const handlePathChange = () => {
+      const pathname = window.location.pathname.toLowerCase();
+      if (pathname === '/privacy' || pathname === '/privacy/') {
         setCurrentPage('privacy');
         window.scrollTo(0, 0);
       } else {
         setCurrentPage('home');
-        window.scrollTo(0, 0);
       }
     };
 
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    handlePathChange();
+    window.addEventListener('popstate', handlePathChange);
+    return () => window.removeEventListener('popstate', handlePathChange);
   }, []);
 
   const handleWatchDemo = () => {
@@ -46,12 +45,16 @@ function App() {
 
   // Navigate to privacy policy
   const handleNavigateToPrivacy = () => {
-    window.location.hash = '#privacy';
+    window.history.pushState(null, '', '/privacy');
+    setCurrentPage('privacy');
+    window.scrollTo(0, 0);
   };
 
   // Navigate back to home
   const handleBackToHome = () => {
-    window.location.hash = '#';
+    window.history.pushState(null, '', '/');
+    setCurrentPage('home');
+    window.scrollTo(0, 0);
   };
 
   if (currentPage === 'privacy') {
