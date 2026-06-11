@@ -3,10 +3,16 @@
   "outputDirectory": "dist",
   "env": {},
   "envPrefix": "VITE_",
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/(?!.*\\.)",
+      "dest": "/index.html",
+      "status": 200
+    },
+    {
+      "src": "/.*",
+      "dest": "/index.html",
+      "status": 200
     }
   ]
 }
